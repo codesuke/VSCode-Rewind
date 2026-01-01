@@ -1,0 +1,76 @@
+{
+  "name": "vscode-rewind",
+  "displayName": "VSCode Rewind",
+  "description": "Year-in-review style metrics for your coding in VS Code.",
+  "version": "0.0.1",
+  "publisher": "codesuke",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codesuke/vscode-rewind.git"
+  },
+  "readme": "README.md",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:vscode-rewind.showStats",
+    "onCommand:vscode-rewind.exportData",
+    "onCommand:vscode-rewind.resetData",
+    "onCommand:vscode-rewind.openDashboard"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-rewind.showStats",
+        "title": "Rewind: Show Stats",
+        "category": "Rewind"
+      },
+      {
+        "command": "vscode-rewind.exportData",
+        "title": "Rewind: Export Data",
+        "category": "Rewind"
+      },
+      {
+        "command": "vscode-rewind.resetData",
+        "title": "Rewind: Reset Data",
+        "category": "Rewind"
+      },
+      {
+        "command": "vscode-rewind.openDashboard",
+        "title": "Rewind: Open Dashboard",
+        "category": "Rewind"
+      }
+    ],
+    "configuration": {
+      "title": "VSCode Rewind",
+      "properties": {
+        "rewind.idleThresholdMs": {
+          "type": "number",
+          "default": 300000,
+          "description": "Milliseconds of inactivity before a session is considered idle."
+        },
+        "rewind.largeEditThreshold": {
+          "type": "number",
+          "default": 50,
+          "description": "Minimum characters in a single insertion to count as an AI-assisted edit."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "lint": "echo 'No lint configured'",
+    "prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^18.18.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  }
+}
